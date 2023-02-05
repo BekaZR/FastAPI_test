@@ -9,5 +9,9 @@ def test_register():
 
 
 async def test_user_register(ac: AsyncClient):
+    response = await ac.post("/user", json={"name": "Beka", "password": "1234"})
+    assert 200 == response.status_code
+
+async def test_user_get_list(ac: AsyncClient):
     response = await ac.get("/users/")
     assert 200 == response.status_code
